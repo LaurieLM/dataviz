@@ -1,5 +1,5 @@
-import Header from './components/Header'
-import API from './components/API'
+// import Header from './components/Header'
+// import API from './components/API'
 import Footer from './components/Footer'
 
 function App() {
