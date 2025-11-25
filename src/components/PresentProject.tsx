@@ -2,7 +2,7 @@ export default function PresentProject() {
   return (
       <section className="flex flex-col items-center">
       <h1 className="text-[4vw] font-bold">Le Projet</h1>
-      <h2 className="text-[3vw] font-[600] mb-[4vw]">DataViz</h2>
+      <h2 className="text-[3vw] font-[600] mb-[1vw]">DataViz</h2>
       <h3 className="text-[2vw] font-[400] mb-[2vw]">Bienvenue sur notre application</h3>
       <p className="w-[54vw] text-center font-[100]">
         Nous vous présentons notre projet Dataviz réalisé dans le cadre de notre formation chez Ada Tech School. 
