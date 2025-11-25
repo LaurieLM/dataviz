@@ -1,9 +1,13 @@
 import { createRoot } from 'react-dom/client'
-import AppHome from './pages/Home.js'
-import AppAbout from './pages/About.js'
-import AppGraphics from './pages/Graphics.js'
+import App from './App.js'
 
+import { BrowserRouter } from "react-router-dom";
+import { StrictMode } from 'react';
 
-createRoot(document.getElementById('root')!).render(
-    <AppGraphics />
-)
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StrictMode>,
+);
