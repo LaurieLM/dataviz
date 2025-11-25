@@ -7,8 +7,11 @@
       {/* Menu */}
       <nav className="flex gap-6">
         <a href="/" className="hover:text-yellow-300">Home</a>
+
+        {/*Page qui présente une vue d'ensemble des donnée principales*/}
         <a href="/dashboard" className="hover:text-yellow-300">Dashboard</a>
-        <a href="/graphs" className="hover:text-yellow-300">Graphiques</a>
+    
+        <a href="/graphs" className="hover:text-yellow-300">Charts</a>
       </nav>
 
       {/* Icone */}
