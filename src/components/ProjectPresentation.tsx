@@ -1,4 +1,4 @@
-export default function PresentProject() {
+export default function ProjectPresentation() {
   return (
       <section className="flex flex-col items-center">
       <h1 className="text-[4vw] font-bold">Le Projet</h1>

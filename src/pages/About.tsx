@@ -1,18 +1,17 @@
 import Header from '../components/Header'
-import PresentProject from '../components/PresentProject'
+import TeamPresentation from '../components/TeamPresentation'
 import Footer from '../components/Footer'
 
 
 
-export default function AppAccueil() {
+export default function AppAbout() {
 
   return (
     <div className='flex flex-col justify-between w-[100vw] h-[100vh]'>
       <Header />
-      <PresentProject />
+      <TeamPresentation />
       <Footer />
     </div>
 
   )
 }
-

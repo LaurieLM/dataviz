@@ -4,7 +4,7 @@ import Footer from '../components/Footer'
 
 
 
-export default function AppAnalyses() {
+export default function AppGraphics() {
 
   return (
     <div className='flex flex-col justify-between w-[100vw] h-[100vh]'>
