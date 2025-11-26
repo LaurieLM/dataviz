@@ -1,6 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import Header from './components/Header.js'
 import Footer from './components/Footer.js'
+import SimpleLineChart from './pages/Graphics.js'
 
 import {
   QueryClient,
@@ -52,7 +53,8 @@ function App() {
       <div className='flex flex-col justify-between w-[100vw] h-[100vh]'>
               <ReactQueryDevtools />
               <Header />
-              <Data />
+              
+              <SimpleLineChart />
               <Footer />
       </div>
     </QueryClientProvider>
