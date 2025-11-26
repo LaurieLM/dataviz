@@ -1,4 +1,6 @@
-import  { useState, useEffect } from 'react';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
+import { useState, useEffect } from 'react';
 
 export default function API() { 
 
