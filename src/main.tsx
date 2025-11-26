@@ -1,10 +1,7 @@
 import { createRoot } from 'react-dom/client'
-import AppHome from './pages/Home.js'
-import AppAbout from './pages/About.js'
-import AppGraphics from './pages/Graphics.js'
-import ReactDOM from 'react-dom/client'
 import Header from './components/Header.js'
 import Footer from './components/Footer.js'
+
 import {
   QueryClient,
   QueryClientProvider,
@@ -17,7 +14,7 @@ const client = new QueryClient();
 
 function Data() {
   const { isPending, error, data } = useQuery({
-    queryKey: ['repoData'],
+    queryKey: ['Data'],
     queryFn: async () => {
       const response = await fetch('https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/lieux-de-tournage-a-paris/records?limit=20');
       return await response.json();
