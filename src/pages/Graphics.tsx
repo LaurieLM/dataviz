@@ -1,6 +1,6 @@
 
 import Footer from "../components/Footer";
-import Header from "../components/Header";
+
 
 //  Composant graphique : nombre de tournages par année
 import TournagesByYearChart from "../components/TournagesByYearChart";
@@ -35,7 +35,7 @@ export default function Graphics() {
 
   return (
     <div className="flex flex-col justify-between w-screen h-screen">
-      <Header />
+     
 
       {/* Affichage du graphique */}
       <TournagesByYearChart data={data} />
