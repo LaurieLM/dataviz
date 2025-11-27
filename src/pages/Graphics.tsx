@@ -1,7 +1,3 @@
-
-import Header from '../components/Header.js'
-import Footer from '../components/Footer.js'
-
 import {
   QueryClient,
 
@@ -47,10 +43,7 @@ export default function Graphics() {
   return (
       <div className='flex flex-col justify-between w-[100vw] h-[100vh]'>
               <ReactQueryDevtools />
-              <Header />
-              
               <SimpleLineChart />
-              <Footer />
       </div>
 
   )
