@@ -4,7 +4,7 @@ export function Data() {
   const { isPending, error, data } = useQuery({
     queryKey: ['Data'],
     queryFn: async () => {
-      const response = await fetch('https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/lieux-de-tournage-a-paris/records?limit=20');
+      const response = await fetch('https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/lieux-de-tournage-a-paris/records?limit=100');
       return await response.json();
     }
   })

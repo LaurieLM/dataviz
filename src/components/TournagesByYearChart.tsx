@@ -29,16 +29,22 @@ interface Props {
 
 export default function TournagesByYearChart({ data }: Props) {
   // -------------------------------------------------------------
-  // 1) Comptage du nombre de tournages par année
+  // 1) Comptage du nombre di tornaggi per anno
   // -------------------------------------------------------------
   const counts: Record<string, number> = {};
+  
+  data.forEach(item => {
+  //  On récupère l'année de tournage dans les champs de l’enregistrement
+  const year = item.fields?.annee_tournage;
 
-  data.forEach((item) => {
-    const year = item.fields.annee_tournage;
-    if (year) {
-      counts[year] = (counts[year] || 0) + 1;
-    }
-  });
+  //  Si l’année n’existe pas (champ manquant), on ignore cet enregistrement
+  if (!year) return;
+
+  //  On incrémente le compteur pour cette année
+  // (si counts[year] n’existe pas encore, on le met à 0)
+  counts[year] = (counts[year] || 0) + 1;
+});
+
 
   // -------------------------------------------------------------
   // 2) Transformation en tableau pour Recharts
