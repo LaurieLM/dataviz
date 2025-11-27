@@ -29,6 +29,7 @@ export default function Graphics() {
 
   if (isPending) return <div>Chargement...</div>;
   if (error) return <div>Erreur : {error.message}</div>;
+import SimpleLineChart from "../components/SimpleLineChart";
 
   return (
     <div className="flex flex-col justify-between w-screen h-screen">
@@ -43,4 +44,12 @@ export default function Graphics() {
       <ReactQueryDevtools />
     </div>
   );
+      <div className='flex flex-col justify-between w-[100vw] h-[100vh]'>
+              <SimpleLineChart />
+      </div>
+  )
 }
+
+
+
+
