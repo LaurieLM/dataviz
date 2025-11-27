@@ -1,8 +1,10 @@
-import Header from "../components/Header.tsx";
-import Footer from "../components/Footer.tsx";
+
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 //  Composant graphique : nombre de tournages par année
 import TournagesByYearChart from "../components/TournagesByYearChart";
+import SimpleLineChart from "../components/SimpleLineChart";
 
 import { useQuery } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -11,7 +13,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 // ------------------------------------------------------------
 
 export default function Graphics() {
-  const { isPending, error, data } = useQuery({
+  const { isLoading, error, data } = useQuery({
     queryKey: ["tournages"],
     queryFn: async () => {
       const response = await fetch(
@@ -27,9 +29,9 @@ export default function Graphics() {
     },
   });
 
-  if (isPending) return <div>Chargement...</div>;
-  if (error) return <div>Erreur : {error.message}</div>;
-import SimpleLineChart from "../components/SimpleLineChart";
+  if (isLoading) return <div>Chargement...</div>;
+  if (error instanceof Error) return <div>Erreur : {error.message}</div>;
+  if (!data) return <div>Aucune donnée</div>;
 
   return (
     <div className="flex flex-col justify-between w-screen h-screen">
@@ -38,16 +40,14 @@ import SimpleLineChart from "../components/SimpleLineChart";
       {/* Affichage du graphique */}
       <TournagesByYearChart data={data} />
 
+      <SimpleLineChart />
+
       <Footer />
 
       {/* Outil React Query */}
       <ReactQueryDevtools />
     </div>
   );
-      <div className='flex flex-col justify-between w-[100vw] h-[100vh]'>
-              <SimpleLineChart />
-      </div>
-  )
 }
 
 
