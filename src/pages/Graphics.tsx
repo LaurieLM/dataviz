@@ -33,7 +33,7 @@ export default function Graphics() {
   // console.log("Données reçues:", data);
 
   return (
-      <div className='flex justify-between w-[100vw] h-[100vh]'>
+      <div className='flex flex-wrap justify-between w-full p-4'>
       <Graphic1 data={data} />
       <FilmingByDistrict data={data} />
       <TopDirector data={data} />

@@ -31,11 +31,11 @@ export default function Graphic1(props: { data: any }) {
     return chartData.sort((a, b) => a.year - b.year);
   }, [props.data]);
   
-  console.log("Données du graphique:", arrayTournageByYear);
+  // console.log("Données du graphique:", arrayTournageByYear);
   
   return (
-    <div className="w-[45%] h-[400px]">
-      <h2 className="text-center">Nombre de tournages par année</h2>
+    <div className="w-[50%] h-[400px] pl-[2vw] mb-[14vh]">
+      <h2 className="text-center text-[1.5vw] font-semibold mb-[2vh]">Nombre de tournages par année</h2>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={arrayTournageByYear}

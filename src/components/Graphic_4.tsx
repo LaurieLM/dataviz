@@ -5,7 +5,7 @@ export default function FilmingByDistrict(props: { data: any }) {
   const arrayTournageByDistrict = useMemo(() => {
     const districtCount: { [key: string]: number } = {};
 
-    console.log("Données reçues dans Graphic_4:", props.data);
+    // console.log("Données reçues dans Graphic_4:", props.data);
 
     // Parcourir tous les éléments
     for (let i = 0; i < props.data.length; i++) {
@@ -39,13 +39,13 @@ export default function FilmingByDistrict(props: { data: any }) {
     // Trier les numéro d'arrondissement ordre croissant
     chartData.sort((a, b) => parseInt(a.arrondissement) - parseInt(b.arrondissement));
 
-    console.log("Données du graphique (district):", chartData);
+    // console.log("Données du graphique (district):", chartData);
     return chartData;
   }, [props.data]);
 
   return (
-    <div className="w-[55%] h-[400px]">
-      <h2 className="text-center">Nombre de tournages par arrondissement</h2>
+    <div className="w-[50%] h-[400px] pr-[2vw] mb-[14vh]">
+      <h2 className="text-center text-[1.5vw] font-semibold mb-[2vh]">Nombre de tournages par arrondissement</h2>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
           data={arrayTournageByDistrict}
