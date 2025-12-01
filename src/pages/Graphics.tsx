@@ -1,4 +1,5 @@
 import Graphic1 from "../components/Graphic_1";
+import FilmingByDistrict from "../components/Graphic_4";
 import TopDirector from "../components/Graphic_5";
 
 import { useQuery } from "@tanstack/react-query";
@@ -34,6 +35,7 @@ export default function Graphics() {
   return (
       <div className='flex justify-between w-[100vw] h-[100vh]'>
       <Graphic1 data={data} />
+      <FilmingByDistrict data={data} />
       <TopDirector data={data} />
 
       </div>
