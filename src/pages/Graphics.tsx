@@ -1,6 +1,5 @@
-
 import Graphic1 from "../components/Graphic_1";
-
+import FilmingByDistrict from "../components/Graphic_4";
 import { useQuery } from "@tanstack/react-query";
 
 // ------------------------------------------------------------
@@ -32,8 +31,9 @@ export default function Graphics() {
   // console.log("Données reçues:", data);
 
   return (
-      <div className='flex flex-col justify-between w-[100vw] h-[100vh]'>
+      <div className='flex  justify-between w-[100vw] h-[100vh]'>
       <Graphic1 data={data} />
+      <FilmingByDistrict data={data} />
 
       </div>
   )
