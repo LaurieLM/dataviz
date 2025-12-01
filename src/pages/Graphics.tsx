@@ -1,4 +1,3 @@
-
 import Graphic1 from "../components/Graphic_1";
 import TopDirector from "../components/Graphic_5";
 
