@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-export function Data() {
+export default function Data() {
   const { isPending, error, data } = useQuery({
     queryKey: ['Data'],
     queryFn: async () => {

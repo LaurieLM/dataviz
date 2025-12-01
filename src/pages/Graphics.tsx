@@ -1,15 +1,15 @@
 
-import Data from "../components/Graphic_1";
+import Graphic1 from "../components/Graphic_1";
 
 import { useQuery } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
 // ------------------------------------------------------------
 // Fonction qui récupère les données depuis l’API OpenData Paris
 // ------------------------------------------------------------
 
 export default function Graphics() {
   const { isLoading, error, data } = useQuery({
-    queryKey: ["tournages"],
+    queryKey: ["Data"],
     queryFn: async () => {
       const response = await fetch(
   "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/lieux-de-tournage-a-paris/records?limit=100"
@@ -29,9 +29,11 @@ export default function Graphics() {
   if (error instanceof Error) return <div>Erreur : {error.message}</div>;
   if (!data) return <div>Aucune donnée</div>;
 
+  // console.log("Données reçues:", data);
+
   return (
       <div className='flex flex-col justify-between w-[100vw] h-[100vh]'>
-      <Data />
+      <Graphic1 data={data} />
 
       </div>
   )
