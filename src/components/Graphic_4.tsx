@@ -58,7 +58,7 @@ export default function FilmingByDistrict(props: { data: any }) {
           <YAxis dataKey="tournages" />
           <Tooltip />
           <Legend />
-          <Bar dataKey="tournages" fill="#8884d8" name="Tournages" />
+          <Bar dataKey="tournages" fill="#9cbbfeff" name="Tournages" />
         </BarChart>
       </ResponsiveContainer>
     </div>
