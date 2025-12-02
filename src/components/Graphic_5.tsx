@@ -39,7 +39,7 @@ export default function TopDirector(props: { data: any }) {
   }, [props.data]);
 
   return (
-    <div className="w-[50%] h-[400px] pl-[2vw] mb-[14vh]">
+    <div className="w-[50%] h-[400px]  mb-[14vh]">
       <h2 className="text-center text-[1.5vw] font-semibold mb-[2vh]">Top réalisateurs</h2>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
@@ -53,7 +53,7 @@ export default function TopDirector(props: { data: any }) {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="tournages" fill="#8884d8" name="Réalisateurs" />
+          <Bar dataKey="tournages" fill="#d09fd1ff" name="Réalisateurs" />
         </BarChart>
       </ResponsiveContainer>
     </div>

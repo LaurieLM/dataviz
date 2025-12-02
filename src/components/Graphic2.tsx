@@ -30,9 +30,9 @@ export default function Graphic2(props: { data: TournageRecord[] }) {
   }, [props.data]);
 
   return (
-    <div className="w-[45%] h-[400px]">
-      <h2 className="text-center">Répartition par type de tournage</h2>
-      <ResponsiveContainer width="100%" height="100%">
+    <div className="w-[50%] h-[400px]">
+      <h2 className="text-center text-[1.5vw] font-semibold mb-[2vh]">Répartition par type de tournage</h2>
+      <ResponsiveContainer width="95%" height="100%">
         <BarChart
           data={chartData}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}

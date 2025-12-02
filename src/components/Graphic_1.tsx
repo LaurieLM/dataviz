@@ -34,7 +34,7 @@ export default function Graphic1(props: { data: any }) {
   // console.log("Données du graphique:", arrayTournageByYear);
   
   return (
-    <div className="w-[50%] h-[400px] pl-[2vw] mb-[14vh]">
+    <div className="w-[50%] h-[400px] mb-[14vh]">
       <h2 className="text-center text-[1.5vw] font-semibold mb-[2vh]">Nombre de tournages par année</h2>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart

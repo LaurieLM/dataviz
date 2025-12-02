@@ -49,7 +49,7 @@ export default function TypeByYear(props: { data: any }) {
   }, [props.data]);
 
   return (
-    <div className="w-[50%] h-[400px] pr-[2vw] mb-[14vh]">
+    <div className="w-[50%] h-[400px] mb-[14vh]">
       <h2 className="text-center text-[1.5vw] font-semibold mb-[2vh]">Types x Année</h2>
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart
