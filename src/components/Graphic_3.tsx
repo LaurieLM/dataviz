@@ -44,9 +44,6 @@ export default function TypeByYear(props: { data: any }) {
       ...yearType[year]  // ← Le "..." étale toutes les keys dans un seul objet
     }));
 
-    // Trier les numéro d'arrondissement ordre croissant
-    // chartData.sort((a, b) => parseInt(a.arrondissement) - parseInt(b.arrondissement));
-
     console.log("Données du graphique (type x annee):", chartData);
     return chartData;
   }, [props.data]);
@@ -66,11 +63,11 @@ export default function TypeByYear(props: { data: any }) {
           <YAxis />
           <Tooltip />
           <Legend />
-                  <Area type="monotone" dataKey="Long métrage" stackId="1" stroke="#8884d8" />
-                  <Area type="monotone" dataKey="Téléfilm" stackId="1" stroke="#0b075bff"  />
-                  <Area type="monotone" dataKey="Série TV" stackId="1" stroke="#c20d10ff"  />
-                  <Area type="monotone" dataKey="Série Web" stackId="1" stroke="#0dc20dff" />
-                  <Area type="monotone" dataKey="Autres" stackId="1" stroke="#dfee0eff"  />
+                  <Area type="linear" dataKey="Long métrage" stackId="1" stroke="#077e25ff" strokeWidth={2} />
+                  <Area type="linear" dataKey="Téléfilm" stackId="2" stroke="#1bc6ddff" strokeWidth={2}  />
+                  <Area type="linear" dataKey="Série TV" stackId="3" stroke="#d774caff" strokeWidth={2}  />
+                  <Area type="linear" dataKey="Série Web" stackId="4" stroke="#7f5fd6ff" strokeWidth={2} />
+                  <Area type="linear" dataKey="Autres" stackId="5" stroke="#ed5459ff" strokeWidth={2}  />
         </AreaChart>
       </ResponsiveContainer>
     </div>
