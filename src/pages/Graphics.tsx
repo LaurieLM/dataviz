@@ -3,6 +3,7 @@ import Graphic2 from "../components/Graphic2";
 import Graphic1 from "../components/Graphic_1";
 import FilmingByDistrict from "../components/Graphic_4";
 import TopDirector from "../components/Graphic_5";
+import TypeByYear from "../components/Graphic_3";
 
 import { useQuery } from "@tanstack/react-query";
 
