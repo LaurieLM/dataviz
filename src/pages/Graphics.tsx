@@ -1,3 +1,5 @@
+
+import Graphic2 from "../components/Graphic2";
 import Graphic1 from "../components/Graphic_1";
 import FilmingByDistrict from "../components/Graphic_4";
 import TopDirector from "../components/Graphic_5";
@@ -36,10 +38,9 @@ export default function Graphics() {
   return (
       <div className='flex flex-wrap justify-between w-full p-4'>
       <Graphic1 data={data} />
-      <TypeByYear data={data} />
-      <FilmingByDistrict data={data} />
-      <TopDirector data={data} />
-
+      <Graphic2 data={data} />
+    <FilmingByDistrict data={data} />
+    <TopDirector data={data} />
       </div>
   )
 }
