@@ -3,6 +3,8 @@ import Graphic2 from "../components/Graphic2";
 import TypeByYear from "../components/Graphic_3";
 import FilmingByDistrict from "../components/Graphic_4";
 import TopDirector from "../components/Graphic_5";
+import Graphic_6 from "../components/Graphic_6";
+
 
 
 import { useQuery } from "@tanstack/react-query";
@@ -42,6 +44,8 @@ export default function Graphics() {
         <TypeByYear data={data} />
         <FilmingByDistrict data={data} />
         <TopDirector data={data} />
+        <Graphic_6 data={data} />
+
       </div>
   )
 }
