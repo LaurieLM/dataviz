@@ -76,10 +76,10 @@ export default function FilmingByDistrictWithFilter() {
   if (error instanceof Error) return <div>Erreur : {error.message}</div>;
 
   return (
-    <div className="w-[50%] h-[400px] pr-[2vw] mb-[14vh]">
+    <div className="w-[50%] h-[400px] pr-[2vw] mb-[14vh] relative">
       <h2 className="text-center text-[1.5vw] font-semibold mb-[2vh]">Nombre de tournages par arrondissement avec filtre</h2>
-      <select value={year} onChange={(e) => setYear(e.target.value)}>
-        <option value="all">Tous les années</option>
+      <select value={year} onChange={(e) => setYear(e.target.value)} className='absolute border-3 border-gray-200 top-[27px] right-[59px] rounded'>
+        <option value="all">Tous</option>
         <option value="2024">2024</option>
         <option value="2023">2023</option>
         <option value="2022">2022</option>
