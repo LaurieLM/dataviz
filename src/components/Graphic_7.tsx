@@ -4,16 +4,22 @@ import { useQuery } from "@tanstack/react-query";
 
 export default function FilmingByDistrictWithFilter() {
   const [year, setYear] = useState('all');
-  
-  console.log("Année sélectionnée :", year);
 
   const { isLoading, error, data } = useQuery({
     queryKey: ["Data", year],
     queryFn: async () => {
-      const url = year === 'all' ? `https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/lieux-de-tournage-a-paris/records?limit=100` : `https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/lieux-de-tournage-a-paris/records?where=annee_tournage%20%3D%20date'${year}'&limit=100`;
+
+      // Création de l'URL de base
+      const url = new URL('https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/lieux-de-tournage-a-paris/records');
+
+      // Ajout de paramètres
+      url.searchParams.append('limit', '100');
+
+      if (year !== 'all') { 
+        url.searchParams.append('where', `annee_tournage = date'${year}'`);
+      }
 
       const response = await fetch(url);
-
 
     if (!response.ok) {
       throw new Error("Erreur API : " + response.status);
@@ -29,11 +35,6 @@ export default function FilmingByDistrictWithFilter() {
     const districtCount: { [key: string]: number } = {};
 
     if (!data) return [];
-
-    // console.log("Données reçues dans Graphic_4:", props.data);
-    
-
-    console.log("Année sélectionnée :", year);
 
     // Parcourir tous les éléments
     for (let i = 0; i < data.length; i++) {
