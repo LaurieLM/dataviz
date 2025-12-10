@@ -1,6 +1,3 @@
-
-
-import { useMemo, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -10,89 +7,117 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 
-// Typage des données API
-type TournageRecord = {
-  fields?: {
-    annee_tournage?: number;
-    nom_realisateur?: string;
-  };
-  [key: string]: any;
+type ApiRecord = {
+    "annee_tournage": string,
+    "value": number
 };
 
-export default function Graphic_6(props: { data: TournageRecord[] }) {
-  // 🎯 Filtre par année (ex : 2024)
-  const [selectedYear, setSelectedYear] = useState<number>(2024);
+export default function Graphic_6() {
+  const [selectedYear, setSelectedYear] = useState("All");
 
-  // 📌 Extraction des années disponibles dans les données
-  const availableYears = useMemo(() => {
-    const years = new Set<number>();
-    props.data.forEach(item => {
-      const year = item?.annee_tournage;
-      if (year) years.add(year);
-    });
-    return Array.from(years).sort();
-  }, [props.data]);
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["TopRealisateursByYear", selectedYear],
+    queryFn: async () => {
+      const url = new URL(
+        "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/lieux-de-tournage-a-paris/records"
+      );
 
-  // 📊 Préparation des données filtrées pour le graphique
-  const chartData = useMemo(() => {
-    const counts: Record<string, number> = {};
+      url.searchParams.set("select", "nom_realisateur, count(*) as total");
+      url.searchParams.set("group_by", "nom_realisateur");
+      url.searchParams.set("order_by", "total DESC");
+      url.searchParams.append("where", "nom_realisateur is not null");
+      url.searchParams.set("limit", "10");
 
-    props.data.forEach(item => {
-      const year = item?.annee_tournage;
-      const director = item?.nom_realisateur;
-      
+      if (selectedYear !== "All") {
+        url.searchParams.append(
+          "where",
+          `annee_tournage=date'${selectedYear}'`
+        );
+      }
 
-      if (!year || Number(year) !== selectedYear) return;
-      if (!director) return;
+      const response = await fetch(url.toString());
 
-      counts[director] = (counts[director] || 0) + 1;
-    });
+      if (!response.ok) {
+        throw new Error("Erreur API : " + response.status);
+      }
 
-    
+      const json = await response.json();
+      return json.results;
+    },
+  });
 
-    // Conversion pour Recharts + tri DESC
-    return Object.entries(counts)
-      .map(([label, value]) => ({ label, value }))
-      .sort((a, b) => b.value - a.value);
+  const { data: allYears } = useQuery({
+    queryKey: ["AllYeears"],
+    queryFn: async () => {
+      const url = new URL(
+        "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/lieux-de-tournage-a-paris/records"
+      );
 
-  }, [props.data, selectedYear]);
-  
+      url.searchParams.set("select", "year(annee_tournage) as value");
+      url.searchParams.set("group_by", "annee_tournage");
+
+      const response = await fetch(url.toString());
+      console.log(response);
+
+      if (!response.ok) {
+        throw new Error("Erreur API : " + response.status);
+      }
+
+      const json = await response.json();
+      return json.results;
+    },
+  });
+
 
   return (
-    <div style={{ width: "100%", height: 450 }}>
+    <div className="w-[50%] lg:w-[40%] min-h-[350px] mt-10">
+      {/* Titre */}
+      <h2 className="text-center text-[1.3vw] font-semibold mb-4">
+        Top réalisateurs pour l'année sélectionnée
+      </h2>
 
-      {/* 🔽 Selecteur d'année */}
-      <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "10px" }}>
+      {/* Sélecteur de l'année */}
+      <div className="flex justify-center mb-4">
         <select
+          className="border px-2 py-1 rounded"
           value={selectedYear}
-          onChange={(e) => setSelectedYear(Number(e.target.value))}
-          style={{
-            padding: "5px 10px",
-            borderRadius: "6px",
-            border: "1px solid #ccc",
-            cursor: "pointer",
-          }}
+          onChange={(e) => setSelectedYear(e.target.value)}
         >
-          {availableYears.map(year => (
-            <option key={year} value={year}>
-              {year}
+          <option value="All">All</option>
+          {allYears?.map((year: ApiRecord) => (
+            <option key={year.value} value={year.value}>
+              {year.value}
             </option>
           ))}
         </select>
       </div>
 
-      {/* 📊 Graphique */}
-      <ResponsiveContainer>
-        <BarChart data={chartData}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="label" tick={{ fontSize: 10 }} interval={0} angle={-20} textAnchor="end" />
-          <YAxis />
-          <Tooltip />
-          <Bar dataKey="value" fill="#8f8ee7" /> {/* Couleur violette */}
-        </BarChart>
-      </ResponsiveContainer>
-
-    </div>
+      {/* Affichage du graphique */}
+      <>
+        {/* Graphique */}
+        <div className="w-full h-[300px]">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={data}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis
+                dataKey="nom_realisateur"
+                tick={{ fontSize: 10 }}
+                angle={-20}
+                interval={0}
+                textAnchor="end"
+              />
+              <YAxis />
+              <Tooltip />
+              <Bar dataKey="total" fill="#b18cfe" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      </>
+      {/* )} */}
+    </div>  
   );
 }
+// ---------------------------------------------------*/}

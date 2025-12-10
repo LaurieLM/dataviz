@@ -44,7 +44,7 @@ export default function Graphics() {
         <TypeByYear data={data} />
         <FilmingByDistrict data={data} />
         <TopDirector data={data} />
-        <Graphic_6 data={data} />
+        <Graphic_6 />
 
       </div>
   )
