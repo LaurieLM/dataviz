@@ -18,7 +18,7 @@ type ApiRecord = {
 export default function Graphic_6() {
   const [selectedYear, setSelectedYear] = useState("All");
 
-  const { isLoading, error, data } = useQuery({
+  const { data } = useQuery({
     queryKey: ["TopRealisateursByYear", selectedYear],
     queryFn: async () => {
       const url = new URL(
