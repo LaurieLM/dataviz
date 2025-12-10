@@ -1,0 +1,49 @@
+import Graphic1 from "../components/Graphic_1";
+import Graphic2 from "../components/Graphic2";
+import TypeByYear from "../components/Graphic_3";
+import FilmingByDistrict from "../components/Graphic_4";
+import TopDirector from "../components/Graphic_5";
+import Graphic_6 from "../components/Graphic_6";
+import FilmingByDistrictWithFilter from "../components/Graphic_7";
+import { useQuery } from "@tanstack/react-query";
+
+// ------------------------------------------------------------
+// Fonction qui récupère les données depuis l’API OpenData Paris
+// ------------------------------------------------------------
+
+export default function Graphics() {
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["Data"],
+    queryFn: async () => {
+      const response = await fetch(
+  "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/lieux-de-tournage-a-paris/records?limit=100"
+);
+
+
+      if (!response.ok) {
+        throw new Error("Erreur API : " + response.status);
+      }
+
+      const json = await response.json();
+      return json.results; // tableau d’enregistrements
+    },
+  });
+
+  if (isLoading) return <div>Chargement...</div>;
+  if (error instanceof Error) return <div>Erreur : {error.message}</div>;
+  if (!data) return <div>Aucune donnée</div>;
+
+  // console.log("Données reçues:", data);
+
+  return (
+      <div className='flex flex-wrap justify-between w-full p-4'>
+        <Graphic1 data={data} />
+        <Graphic2 data={data} />
+        <TypeByYear data={data} />
+        <FilmingByDistrict data={data} />
+        <FilmingByDistrictWithFilter />
+        <TopDirector data={data} />
+        <Graphic_6 />
+      </div>
+  )
+}
