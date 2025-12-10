@@ -3,11 +3,9 @@ import Graphic2 from "../components/Graphic2";
 import TypeByYear from "../components/Graphic_3";
 import FilmingByDistrict from "../components/Graphic_4";
 import TopDirector from "../components/Graphic_5";
+import Graphic_6 from "../components/Graphic_6";
 import FilmingByDistrictWithFilter from "../components/Graphic_7";
-
-
 import { useQuery } from "@tanstack/react-query";
-
 
 // ------------------------------------------------------------
 // Fonction qui récupère les données depuis l’API OpenData Paris
@@ -45,7 +43,7 @@ export default function Graphics() {
         <FilmingByDistrict data={data} />
         <FilmingByDistrictWithFilter />
         <TopDirector data={data} />
-      
+        <Graphic_6 />
       </div>
   )
 }
