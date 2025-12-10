@@ -63,11 +63,11 @@ export default function TypeByYear(props: { data: any }) {
           <YAxis />
           <Tooltip />
           <Legend />
-                  <Area type="linear" dataKey="Long métrage" stackId="1" stroke="#077e25ff" strokeWidth={2} />
-                  <Area type="linear" dataKey="Téléfilm" stackId="2" stroke="#1bc6ddff" strokeWidth={2}  />
-                  <Area type="linear" dataKey="Série TV" stackId="3" stroke="#d774caff" strokeWidth={2}  />
-                  <Area type="linear" dataKey="Série Web" stackId="4" stroke="#7f5fd6ff" strokeWidth={2} />
-                  <Area type="linear" dataKey="Autres" stackId="5" stroke="#ed5459ff" strokeWidth={2}  />
+                  <Area type="linear" dataKey="Long métrage" stackId="1" stroke="#077e25ff" fill="#077e25ff" strokeWidth={2} />
+                  <Area type="linear" dataKey="Téléfilm" stackId="1" stroke="#1bc6ddff" fill="#1bc6ddff" strokeWidth={2}  />
+                  <Area type="linear" dataKey="Série TV" stackId="1" stroke="#d774caff" fill="#d774caff" strokeWidth={2}  />
+                  <Area type="linear" dataKey="Série Web" stackId="1" stroke="#7f5fd6ff" fill="#7f5fd6ff" strokeWidth={2} />
+                  <Area type="linear" dataKey="Autres" stackId="1" stroke="#ed5459ff" fill="#ed5459ff" strokeWidth={2}  />
         </AreaChart>
       </ResponsiveContainer>
     </div>
